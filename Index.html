@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head
+>
+  <meta charset="UTF-8">
+  <title>College vs Non-College Survey</title>
+  <link rel="stylesheet" href="./style.css">
+
+</head>
+<body>
+<div class="container">
+    <header class="header">
+      <h1 id="title" class="text-center">College vs Non-College Survey</h1>
+      <p id="description" class="description text-center">
+        Please fill out the form below
+      </p>
+    </header>
+    <form action="https://sheetdb.io/api/v1/x2k16lz1hz5s9" method="POST" id="sheetdb-form">
+      <div class="form-group">
+        <label id="name-label" for="name">Name</label>
+        <input
+          type="text"
+          name="data[Name]"
+          id="name"
+          class="form-control"
+          placeholder="Enter your first and last name"
+          required
+        />
+      </div>
+      <div class="form-group">
+        <label id="email-label" for="email">Email</label>
+        <input
+          type="email"
+          name="data[Email]"
+          id="email"
+          class="form-control"
+          placeholder="Enter your Email"
+          required
+        />
+      </div>
+      <div class="form-group">
+          <label id="contact-label" for="contact number">Contact Number (Enter 999-999-9999)</label>
+          <input
+          type="text"
+          name="data[Contact]"
+          id="text"
+          class="form-control"
+          placeholder="Enter your contact number"
+          required
+        />
+      </div>
+      <div class="form-group">
+        <label id="number-label" for="number"
+          >Age<span class="clue">(optional)</span></label
+        >
+        <input
+          type="number"
+          name="data[Age]"
+          id="number"
+          min="1"
+          max="100"
+          class="form-control"
+          placeholder="Age"
+        />
+      </div>
+      <div class="form-group">
+        <p>Which post-high school route did you take?</p>
+        <select id="dropdown" name="data[Route Decision]" class="form-control" required>
+          <option disabled selected value>Select an option</option>
+          <option value="Traditional College Student">Traditional College Student</option>
+          <option value="Community College Student">Community College Student</option>
+          <option value="Trade School">Trade School</option>
+          <option value="Straight To Work">Straight To Work</option>
+          <option value="Military">Military</option>
+          <option value="Didn't Graduate High School">Didn't Graduate High School</option>
+          <option value="other">Other</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label id="route-label" for="route decision">Why did you choose your route?</label>
+        <input
+        type="text"
+        name="data[Reason for decision]"
+        id="text"
+        class="form-control"
+        placeholder="Why did you choose your route?"
+        required
+      />
+    </div>
+
+      <div class="form-group">
+        <p>Are you happy with your decision?</p>
+        <label>
+          <input
+            name="data[Okay with decision?]"
+            value="absolutely"
+            type="radio"
+            class="input-radio"
+            checked
+          />Absolutely</label
+        >
+        <label>
+          <input
+            name="data[Okay with decision?]"
+            value="maybe"
+            type="radio"
+            class="input-radio"
+          />Maybe</label
+        >
+  
+        <label
+          ><input
+            name="data[Okay with decision?]"
+            value="no"
+            type="radio"
+            class="input-radio"
+          />No</label
+        >
+      </div>
+
+      <div class="form-group">
+        <p>Any comments or suggestions?</p>
+        <textarea
+          id="comments"
+          class="input-textarea"
+          name="data[Any Comments?]"
+          placeholder="Enter your comment here..."
+        ></textarea>
+      </div>
+  
+      <div class="form-group">
+        <button type="submit" id="submit" class="submit-button">
+          Submit
+        </button>
+      </div>
+    </form>
+  </div>
+
+  <script>
+    var form = document.getElementById('sheetdb-form');
+    form.addEventListener("submit", e => {
+      e.preventDefault();
+      fetch(form.action, {
+          method : "POST",
+          body: new FormData(document.getElementById("sheetdb-form")),
+      }).then(
+          response => response.json()
+      ).then((html) => {
+        // you can put any JS code here
+        alert('Thank you for your input :) Please close or refresh the page')
+      });
+    });
+  </script>
